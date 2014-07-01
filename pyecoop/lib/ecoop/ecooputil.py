@@ -74,7 +74,7 @@ def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostna
     f = open(pdf,'w')
     f.write(texfile)
     f.close()
-    latexcommand = "pdflatex -output-directory=%s %s" % (ID pdf)
+    latexcommand = "pdflatex -output-directory=%s %s" % (ID, pdf)
     output, error = subprocess.Popen(latexcommand.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
     #!pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
     pdfname = texoutput.replace(".tex", ".pdf")
