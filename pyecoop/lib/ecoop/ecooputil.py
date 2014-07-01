@@ -66,6 +66,26 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
 
+
+def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostname="epinux.com", ID="", qr=False):
+    pdf = os.path.join(ID,texoutput)
+    f = open(pdf,'w')
+    f.write(texfile)
+    f.close()
+    !pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
+    pdfname = texoutput.replace(".tex", ".pdf")
+    if web:
+        !rm -rf {webdir}/{pdfname}
+        !cp {ID}/test.pdf {webdir}/{pdfname}
+        # add metadata json-ld dict
+        display("PDF available at http://%s/%s" % (hostname, pdfname))
+    if qr:
+        pngname = texoutput.replace(".tex", ".png")
+        !rm -rf {pngname}
+        img = qrcode.make("http://%s/%s" % (hostname, pdfname))
+        img.save(pngname)
+        display(Image(pngname))
+
 class shareUtil():
     def zipdir(self, basedir, archivename, rm='no'):
         """
