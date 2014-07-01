@@ -57,7 +57,7 @@ except:
     print('you need to run this code from inside an IPython notebook in order to save provenance')
 eu = EU()
 
-from bokeh import pyplot
+#from bokeh import pyplot
 
 
 class cfData():
@@ -66,7 +66,7 @@ class cfData():
 
     def nao_get(self,
                 url="https://climatedataguide.ucar.edu/sites/default/files/climate_index_files/nao_station_djfm.txt",
-                save=None, csvout='nao.csv', prov=False):
+                save=None, csvout='nao.csv', prov=False, verbose=False):
         """
         
         read NAO data from url and return a pandas dataframe
@@ -86,7 +86,8 @@ class cfData():
                 eu.ensure_dir(save)
                 output = os.path.join(save, csvout)
                 naodata.to_csv(output, sep=',', header=True, index=True, index_label='Date')
-                print('nao data saved in : ' + output)
+                if verbose:
+                    print('nao data saved in : ' + output)
             if prov:
                 jsonld = {
                     "@id": "ex:NAO_dataset",
@@ -124,7 +125,7 @@ class cfData():
 
 
     def nin_get(self, url='http://www.cpc.ncep.noaa.gov/data/indices/sstoi.indices', save=None, csvout='nin.csv',
-                prov=False):
+                prov=False, verbose=False):
         """
         
         read NIN data from url and return a pandas dataframe
@@ -155,7 +156,8 @@ class cfData():
                 eu.ensure_dir(save)
                 output = os.path.join(save, csvout)
                 nin_anomalies.to_csv(output, sep=',', header=True, index=True, index_label='Date')
-                print('data saved as %s ' % output)
+                if verbose:
+                    print('data saved as %s ' % output)
             if prov:
                 function = {}
                 function['name'] = 'nin_get'
@@ -214,7 +216,7 @@ class cfData():
 
 
     def amo_get(self, url='http://www.cdc.noaa.gov/Correlation/amon.us.long.data', save=None, csvout='amo.csv',
-                prov=False):
+                prov=False, verbose=False):
         """
         
         read AMO data from url and return a pandas dataframe
@@ -230,7 +232,8 @@ class cfData():
                                    names=['year', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct',
                                           'nov', 'dec'], skipinitialspace=True, parse_dates=True, skipfooter=4,
                                    index_col=0)
-            print('dataset used: %s' % url)
+            if verbose:
+                print('dataset used: %s' % url)
             ts_raw.replace(-9.99900000e+01, np.NAN, inplace=True)
             amodata = ts_raw.mean(axis=1)
             amodata.name = "amo"
@@ -239,7 +242,8 @@ class cfData():
                 eu.ensure_dir(save)
                 output = os.path.join(save, csvout)
                 amodata.to_csv(output, sep=',', header=True, index=True, index_label='Date')
-                print('data saved as %s ' % output)
+                if verbose:
+                    print('data saved as %s ' % output)
             if prov:
                 function = {}
                 function['name'] = 'amo_get'
@@ -629,7 +633,8 @@ class cfPlot():
                     "ecoop_ext:usedSoftware": [{"@id": "ex:ecoop_software"}, {"@id": "ex:ipython_software"}]
                 }
                 display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
-            pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
+            #pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
+            plt.show()
         except AssertionError:
             if type(data) != pd.core.frame.DataFrame:
                 print('input data not compatible, it has to be of type : pandas.core.frame.DataFrame')

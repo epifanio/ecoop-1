@@ -86,13 +86,13 @@ def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostna
         #!cp {ID}/test.pdf {webdir}/{pdfname}
         output, error = subprocess.Popen(instruction2.split(" "), stderr=subprocess.PIPE).communicate()
         # add metadata json-ld dict
-        display("PDF available at http://%s/%s" % (hostname, pdfname))
+        display("PDF available at http://%s/%s " % (hostname, pdfname))
     if qr:
         pngname = texoutput.replace(".tex", ".png")
         instruction3 = "rm -rf %s" % pngname
         output, error = subprocess.Popen(instruction3.split(" "), stderr=subprocess.PIPE).communicate()
         #!rm -rf {pngname}
-        img = qrcode.make("http://%s/%s" % (hostname, pdfname))
+        img = qrcode.make("http://%s/%s " % (hostname, pdfname))
         img.save(pngname)
         display(Image(pngname))
 
