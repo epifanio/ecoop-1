@@ -65,23 +65,33 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
+import subprocess
 
+# output, error = subprocess.Popen(["ls"], stdout=logfile, stderr=subprocess.PIPE).communicate()
 
 def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostname="epinux.com", ID="", qr=False):
     pdf = os.path.join(ID,texoutput)
     f = open(pdf,'w')
     f.write(texfile)
     f.close()
-    !pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
+    latexcommand = "pdflatex -output-directory=%s %s" % (ID pdf)
+    output, error = subprocess.Popen(latexcommand.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+    #!pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
     pdfname = texoutput.replace(".tex", ".pdf")
     if web:
-        !rm -rf {webdir}/{pdfname}
-        !cp {ID}/test.pdf {webdir}/{pdfname}
+        instruction1 = "rm -rf %s/%s" % (webdir, pdfname)
+        #!rm -rf {webdir}/{pdfname}
+        output, error = subprocess.Popen(instruction1.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+        instruction2 = "cp %s/%s %s/%s" % (ID, pdfname, webdir, pdfname)
+        #!cp {ID}/test.pdf {webdir}/{pdfname}
+        output, error = subprocess.Popen(instruction2.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
         # add metadata json-ld dict
         display("PDF available at http://%s/%s" % (hostname, pdfname))
     if qr:
         pngname = texoutput.replace(".tex", ".png")
-        !rm -rf {pngname}
+        instruction3 = "rm -rf %s" % pngname
+        output, error = subprocess.Popen(instruction3.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+        #!rm -rf {pngname}
         img = qrcode.make("http://%s/%s" % (hostname, pdfname))
         img.save(pngname)
         display(Image(pngname))
