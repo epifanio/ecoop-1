@@ -289,7 +289,7 @@ class cfPlot():
     def plot_index(self, data, name='Index',
                    nb=True, datarange=None,
                    xticks=10, xticks_fontsize=10,
-                   dateformat=False, figsize=(10, 8),
+                   dateformat=False, figsize=(8, 6),
                    xmargin=True, ymargin=True,
                    legend=True, smoother=None,
                    output=None, dpi=300,
