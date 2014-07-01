@@ -75,22 +75,22 @@ def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostna
     f.write(texfile)
     f.close()
     latexcommand = "pdflatex -output-directory=%s %s" % (ID, pdf)
-    output, error = subprocess.Popen(latexcommand.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+    output, error = subprocess.Popen(latexcommand.split(" "), stderr=subprocess.PIPE).communicate()
     #!pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
     pdfname = texoutput.replace(".tex", ".pdf")
     if web:
         instruction1 = "rm -rf %s/%s" % (webdir, pdfname)
         #!rm -rf {webdir}/{pdfname}
-        output, error = subprocess.Popen(instruction1.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+        output, error = subprocess.Popen(instruction1.split(" "), stderr=subprocess.PIPE).communicate()
         instruction2 = "cp %s/%s %s/%s" % (ID, pdfname, webdir, pdfname)
         #!cp {ID}/test.pdf {webdir}/{pdfname}
-        output, error = subprocess.Popen(instruction2.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+        output, error = subprocess.Popen(instruction2.split(" "), stderr=subprocess.PIPE).communicate()
         # add metadata json-ld dict
         display("PDF available at http://%s/%s" % (hostname, pdfname))
     if qr:
         pngname = texoutput.replace(".tex", ".png")
         instruction3 = "rm -rf %s" % pngname
-        output, error = subprocess.Popen(instruction3.split(" "), stdout=logfile, stderr=subprocess.PIPE).communicate()
+        output, error = subprocess.Popen(instruction3.split(" "), stderr=subprocess.PIPE).communicate()
         #!rm -rf {pngname}
         img = qrcode.make("http://%s/%s" % (hostname, pdfname))
         img.save(pngname)
