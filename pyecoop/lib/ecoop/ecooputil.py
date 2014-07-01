@@ -64,6 +64,7 @@ import email.mime.application
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
+from ecoop.splashtemplate import makeSplash
 
 import subprocess
 
@@ -95,6 +96,21 @@ def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostna
         img = qrcode.make("http://%s/%s " % (hostname, pdfname))
         img.save(pngname)
         display(Image(pngname))
+
+
+def makesplashlink(ID, datafile, key="", jist='/usr/local/bin/gist', nb_name=""):
+    datafile = os.path.join(ID,datafile)
+    datalink = util.gistit(filename=datafile, jist=jist, type='text')
+    nbviewerlink = util.gistit(filename=nb_name, jist=jist, type='notebook')
+    splash[key]['nbviewer'] = nbviewerlink
+    splash[key]['repository'] = 'https://github.com/epifanio/ecoop'
+    splash[key]['download'] = 'http://144.76.93.231/shared/%s' % ID
+    f = open(os.path.join(ID, nb_name), 'w')
+    f.write(makeSplash(splash, key))
+    f.close()
+    splashlink = util.gistit(filename=os.path.join(ID, nb_name), jist=jist, type='notebook')
+    return splashlink
+
 
 class shareUtil():
     def zipdir(self, basedir, archivename, rm='no'):
