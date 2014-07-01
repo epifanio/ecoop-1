@@ -81,7 +81,8 @@ class cfData():
         #source_code_link = "http://epinux.com/shared/pyecoop_doc/ecoop.html#ecoop.cf.cfData.nao_get"
         try:
             naodata = pd.read_csv(url, sep='  ', header=0, skiprows=0, index_col=0, parse_dates=True, skip_footer=1)
-            print('dataset used: %s' % url)
+            if verbose:
+                print('dataset used: %s' % url)
             if save:
                 eu.ensure_dir(save)
                 output = os.path.join(save, csvout)
@@ -140,7 +141,8 @@ class cfData():
             ts_raw = pd.read_table(url, sep=' ', header=0, skiprows=0, parse_dates=[['YR', 'MON']],
                                    skipinitialspace=True,
                                    index_col=0, date_parser=parse)
-            print('dataset used: %s' % url)
+            if verbose:
+                print('dataset used: %s' % url)
             ts_year_group = ts_raw.groupby(lambda x: x.year).apply(lambda sdf: sdf if len(sdf) > 11 else None)
             ts_range = pd.date_range(ts_year_group.index[0][1], ts_year_group.index[-1][1] + pd.DateOffset(months=1),
                                      freq="M")
