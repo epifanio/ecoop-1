@@ -299,7 +299,7 @@ class cfPlot():
                    center=False, std=0.1,
                    beta=0.1, power=1, width=1,
                    min_periods=None, freq=None,
-                   scategory=None, frac=1. / 3, it=3, figsave=None, prov=False):
+                   scategory=None, frac=1. / 3, it=3, figsave=None, prov=False, verbose=False):
         """
         
         Function to plot the Climate Forcing indicator for the ESR 2013, it follow graphic guidlines from the past ESR
@@ -413,7 +413,8 @@ class cfPlot():
                 eu.ensure_dir(output)
                 ffigsave = os.path.join(output, figsave)
                 plt.savefig(ffigsave, dpi=dpi)
-                print('graph saved in: %s ' % ffigsave)
+                if verbose:
+                    print('graph saved in: %s ' % ffigsave)
                 if scategory:
                     smoutput = name + '_' + scategory + '.csv'
                     if smoother:
@@ -425,46 +426,13 @@ class cfPlot():
                         newdataframe.to_csv(smoutput, sep=',', header=True, index=True, index_label='Year')
                     else:
                         newy.to_csv(smoutput, sep=',', header=True, index=True, index_label='Year')
-                    print(name + ' smoothed data saved in : %s ' % smoutput)
+                    if verbose:
+                        print(name + ' smoothed data saved in : %s ' % smoutput)
             if nb:
                 fig.subplots_adjust(left=-1.0)
                 fig.subplots_adjust(right=1.0)
             #plt.show()
             if prov:
-                function = {}
-                function['name'] = 'plot_index'
-                function['parameters'] = {}
-                function['parameters']['data'] = data
-                function['parameters']['name'] = name
-                function['parameters']['nb'] = nb
-                function['parameters']['datarange'] = datarange
-                function['parameters']['xticks'] = xticks
-                function['parameters']['xticks_fontsize'] = xticks_fontsize
-                function['parameters']['dateformat'] = dateformat
-                function['parameters']['figsize'] = figsize
-                function['parameters']['xmargin'] = xmargin
-                function['parameters']['ymargin'] = ymargin
-                function['parameters']['legend'] = legend
-                function['parameters']['smoother'] = smoother
-                function['parameters']['output'] = output
-                function['parameters']['dpi'] = dpi
-                function['parameters']['grid'] = grid
-                function['parameters']['xlabel'] = xlabel
-                function['parameters']['ylabel'] = ylabel
-                function['parameters']['title'] = title
-                function['parameters']['win_size'] = win_size
-                function['parameters']['win_type'] = win_type
-                function['parameters']['center'] = center
-                function['parameters']['std'] = std
-                function['parameters']['beta'] = beta
-                function['parameters']['power'] = power
-                function['parameters']['width'] = width
-                function['parameters']['min_periods'] = min_periods
-                function['parameters']['freq'] = freq
-                function['parameters']['scategory'] = scategory
-                function['parameters']['frac'] = frac
-                function['parameters']['it'] = it
-                function['parameters']['figsave'] = figsave
                 jsonld = {
                     "@id": "ex:NAO_figure",
                     "@type": ["prov:Entity", "ecoop:Figure"],
