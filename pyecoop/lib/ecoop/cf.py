@@ -444,7 +444,7 @@ class cfPlot():
                 fig.subplots_adjust(right=1.0)
             #plt.show()
             if prov:
-                datalink=" no link "
+                datalink=" no link to data provided"
                 if dataurl:
                     datalink=dataurl
                 jsonld = {
@@ -620,7 +620,7 @@ class cfPlot():
                     "ecoop_ext:usedSoftware": [{"@id": "ex:ecoop_software"}, {"@id": "ex:ipython_software"}]
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
-                print(jsonld)
+                #print(jsonld)
                 provname=figsave.replace(".","_")
                 display(Javascript("IPython.notebook.metadata.ecoop_prov.%s = %s" % (provname,jsonld)))
                 #display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
