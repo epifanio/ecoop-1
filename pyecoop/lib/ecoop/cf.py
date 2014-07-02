@@ -468,7 +468,7 @@ class cfPlot():
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "data",
-                                "ecoop_ext:parameter_value": "data"
+                                "ecoop_ext:parameter_value": "%s" % datalink
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
