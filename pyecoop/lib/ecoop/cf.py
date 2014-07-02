@@ -52,7 +52,7 @@ from ecoop.ecooputil import shareUtil as EU
 lowess = sm.nonparametric.lowess
 
 try:
-    from IPython.core.display import display
+    from IPython.core.display import display, Javascript
 except:
     print('you need to run this code from inside an IPython notebook in order to save provenance')
 eu = EU()
@@ -117,6 +117,8 @@ class cfData():
                     }
                 }
                 display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                display(Javascript("IPython.notebook.metadata.ecoop_prov.nao_get = {}".format(jsonld)))
+
 
             return naodata
         except IOError:
@@ -195,6 +197,7 @@ class cfData():
                     }
                 }
                 display('nin_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                display(Javascript("IPython.notebook.metadata.ecoop_prov.nin_get = {}".format(jsonld)))
             return nin_anomalies
         except IOError:
             print(
@@ -279,7 +282,8 @@ class cfData():
                         ]
                     }
                 }
-                display('amo_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                #display('amo_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                display(Javascript("IPython.notebook.metadata.ecoop_prov.amo_get = {}".format(jsonld)))
             return amodata
         except:
             print(
@@ -602,7 +606,9 @@ class cfPlot():
                     },
                     "ecoop_ext:usedSoftware": [{"@id": "ex:ecoop_software"}, {"@id": "ex:ipython_software"}]
                 }
-                display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
+                #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
+                display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
+
             #pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
             plt.show()
         except AssertionError:
