@@ -116,7 +116,7 @@ class cfData():
                         ]
                     }
                 }
-                display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
+                display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
 
             return naodata
         except IOError:
@@ -194,7 +194,7 @@ class cfData():
                         ]
                     }
                 }
-                display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
+                display('nin_get - metadata saved', metadata={'ecoop_prov': jsonld})
             return nin_anomalies
         except IOError:
             print(
@@ -279,7 +279,7 @@ class cfData():
                         ]
                     }
                 }
-                display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
+                display('amo_get - metadata saved', metadata={'ecoop_prov': jsonld})
             return amodata
         except:
             print(

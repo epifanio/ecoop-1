@@ -66,6 +66,7 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from ecoop.splashtemplate import makeSplash
 from ecoop.splashdict import splash
+import time
 
 import subprocess
 
@@ -112,6 +113,7 @@ class shareUtil():
         f.close()
         splashlink = self.gistit(filename=os.path.join(ID, nb_name), jist=jist, type='notebook')
         return splashlink
+
 
     def zipdir(self, basedir, archivename, rm='no'):
         """
@@ -364,7 +366,7 @@ class shareUtil():
         if not os.path.exists(dir):
             os.makedirs(dir)
 
-    def save_notebook(self, ID, notebookname, web=None, notebookdir=None):
+    def save_notebook(self, ID, notebookname, web=None, notebookdir=None, sleep=1):
         """
         
         Save the notebook file as html and or as gist
@@ -378,6 +380,7 @@ class shareUtil():
         if not notebookdir:
             notebookdir = os.getcwd()
         display(Javascript("IPython.notebook.save_notebook()"))
+        time.sleep(sleep)
         notebookfile = os.path.join(notebookdir, notebookname)
         savedir = os.path.join(os.getcwd(), ID)
         command1 = 'cp %s %s' % (notebookfile, savedir)
