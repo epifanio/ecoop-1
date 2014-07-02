@@ -296,7 +296,7 @@ class cfData():
 
 
 class cfPlot():
-    def plot_index(self, data, name='Index',
+    def plot_index(self, data, name='Index', dataurl=False
                    nb=True, datarange=None,
                    xticks=10, xticks_fontsize=10,
                    dateformat=False, fig_height=6, fig_width=4,
@@ -367,7 +367,7 @@ class cfPlot():
             y_p = y[np.where(y >= 0)[0]]
             x_n = x[np.where(y < 0)[0]]
             y_n = y[np.where(y < 0)[0]]
-            fig = plt.figure(figsize=(fig_width, fig_height))
+            fig = plt.figure(figsize=(fig_height, fig_width))
             ax1 = fig.add_subplot(111)
             ax1.bar(x_n, y_n, 0.8, facecolor='b', label=name + ' < 0')
             ax1.bar(x_p, y_p, 0.8, facecolor='r', label=name + ' > 0')
@@ -444,6 +444,9 @@ class cfPlot():
                 fig.subplots_adjust(right=1.0)
             #plt.show()
             if prov:
+                datalink=" no link "
+                if dataurl:
+                    datalink=dataurl
                 jsonld = {
                     "@id": "ex:%s" % figsave,
                     "@type": ["prov:Entity", "ecoop:Figure"],
