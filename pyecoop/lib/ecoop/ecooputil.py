@@ -68,51 +68,50 @@ from ecoop.splashtemplate import makeSplash
 
 import subprocess
 
-# output, error = subprocess.Popen(["ls"], stdout=logfile, stderr=subprocess.PIPE).communicate()
-
-def makepdf(texfile="", texoutput="", web=False, webdir="/var/www/html/", hostname="epinux.com", ID="", qr=False):
-    pdf = os.path.join(ID,texoutput)
-    f = open(pdf,'w')
-    f.write(texfile)
-    f.close()
-    latexcommand = "pdflatex -output-directory=%s %s" % (ID, pdf)
-    output, error = subprocess.Popen(latexcommand.split(" "), stderr=subprocess.PIPE).communicate()
-    #!pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
-    pdfname = texoutput.replace(".tex", ".pdf")
-    if web:
-        instruction1 = "rm -rf %s/%s" % (webdir, pdfname)
-        #!rm -rf {webdir}/{pdfname}
-        output, error = subprocess.Popen(instruction1.split(" "), stderr=subprocess.PIPE).communicate()
-        instruction2 = "cp %s/%s %s/%s" % (ID, pdfname, webdir, pdfname)
-        #!cp {ID}/test.pdf {webdir}/{pdfname}
-        output, error = subprocess.Popen(instruction2.split(" "), stderr=subprocess.PIPE).communicate()
-        # add metadata json-ld dict
-        display("PDF available at http://%s/%s " % (hostname, pdfname))
-    if qr:
-        pngname = texoutput.replace(".tex", ".png")
-        instruction3 = "rm -rf %s" % pngname
-        output, error = subprocess.Popen(instruction3.split(" "), stderr=subprocess.PIPE).communicate()
-        #!rm -rf {pngname}
-        img = qrcode.make("http://%s/%s " % (hostname, pdfname))
-        img.save(pngname)
-        display(Image(pngname))
-
-
-def makesplashlink(ID, datafile, key="", jist='/usr/local/bin/gist', nb_name=""):
-    datafile = os.path.join(ID,datafile)
-    datalink = util.gistit(filename=datafile, jist=jist, type='text')
-    nbviewerlink = util.gistit(filename=nb_name, jist=jist, type='notebook')
-    splash[key]['nbviewer'] = nbviewerlink
-    splash[key]['repository'] = 'https://github.com/epifanio/ecoop'
-    splash[key]['download'] = 'http://144.76.93.231/shared/%s' % ID
-    f = open(os.path.join(ID, nb_name), 'w')
-    f.write(makeSplash(splash, key))
-    f.close()
-    splashlink = util.gistit(filename=os.path.join(ID, nb_name), jist=jist, type='notebook')
-    return splashlink
-
 
 class shareUtil():
+
+    def makepdf(self, texfile="", texoutput="", web=False, webdir="/var/www/html/", hostname="epinux.com", ID="", qr=False):
+        pdf = os.path.join(ID,texoutput)
+        f = open(pdf,'w')
+        f.write(texfile)
+        f.close()
+        latexcommand = "pdflatex -output-directory=%s %s" % (ID, pdf)
+        output, error = subprocess.Popen(latexcommand.split(" "), stderr=subprocess.PIPE).communicate()
+        #!pdflatex -output-directory={ID} {pdf} > /dev/null 2>&1
+        pdfname = texoutput.replace(".tex", ".pdf")
+        if web:
+            instruction1 = "rm -rf %s/%s" % (webdir, pdfname)
+            #!rm -rf {webdir}/{pdfname}
+            output, error = subprocess.Popen(instruction1.split(" "), stderr=subprocess.PIPE).communicate()
+            instruction2 = "cp %s/%s %s/%s" % (ID, pdfname, webdir, pdfname)
+            #!cp {ID}/test.pdf {webdir}/{pdfname}
+            output, error = subprocess.Popen(instruction2.split(" "), stderr=subprocess.PIPE).communicate()
+            # add metadata json-ld dict
+            display("PDF available at http://%s/%s " % (hostname, pdfname))
+        if qr:
+            pngname = texoutput.replace(".tex", ".png")
+            instruction3 = "rm -rf %s" % pngname
+            output, error = subprocess.Popen(instruction3.split(" "), stderr=subprocess.PIPE).communicate()
+            #!rm -rf {pngname}
+            img = qrcode.make("http://%s/%s " % (hostname, pdfname))
+            img.save(pngname)
+            display(Image(pngname))
+
+
+    def makesplashlink(self, ID, datafile, key="", jist='/usr/local/bin/gist', nb_name=""):
+        datafile = os.path.join(ID,datafile)
+        datalink = util.gistit(filename=datafile, jist=jist, type='text')
+        nbviewerlink = util.gistit(filename=nb_name, jist=jist, type='notebook')
+        splash[key]['nbviewer'] = nbviewerlink
+        splash[key]['repository'] = 'https://github.com/epifanio/ecoop'
+        splash[key]['download'] = 'http://144.76.93.231/shared/%s' % ID
+        f = open(os.path.join(ID, nb_name), 'w')
+        f.write(makeSplash(splash, key))
+        f.close()
+        splashlink = util.gistit(filename=os.path.join(ID, nb_name), jist=jist, type='notebook')
+        return splashlink
+
     def zipdir(self, basedir, archivename, rm='no'):
         """
         
