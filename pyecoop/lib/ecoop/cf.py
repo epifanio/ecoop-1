@@ -296,7 +296,7 @@ class cfData():
 
 
 class cfPlot():
-    def plot_index(self, data, name='Index', dataurl=False
+    def plot_index(self, data, name='Index', dataurl=False,
                    nb=True, datarange=None,
                    xticks=10, xticks_fontsize=10,
                    dateformat=False, fig_height=6, fig_width=4,
