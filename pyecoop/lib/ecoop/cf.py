@@ -299,7 +299,7 @@ class cfPlot():
     def plot_index(self, data, name='Index',
                    nb=True, datarange=None,
                    xticks=10, xticks_fontsize=10,
-                   dateformat=False, figsize=(6, 4),
+                   dateformat=False, fig_height=6, fig_width=4,
                    xmargin=True, ymargin=True,
                    legend=True, smoother=None,
                    output=None, dpi=300,
@@ -323,7 +323,8 @@ class cfPlot():
         :param xticks: integer xtick spacing default=10
         :param xticks_fontsize: integer xticks fontsize default=10
         :param dateformat: boolean if True set the xticks labels in date format
-        :param figsize: tuple figure size default (10, 8)
+        :param fig_height: int figure height default 8
+        :param fig_width: int figure width default 10
         :param xmargin: bolean default True
         :param ymargin: bolean default True
         :param legend: bolean default True
@@ -366,7 +367,7 @@ class cfPlot():
             y_p = y[np.where(y >= 0)[0]]
             x_n = x[np.where(y < 0)[0]]
             y_n = y[np.where(y < 0)[0]]
-            fig = plt.figure(figsize=figsize)
+            fig = plt.figure(figsize=(fig_width, fig_height))
             ax1 = fig.add_subplot(111)
             ax1.bar(x_n, y_n, 0.8, facecolor='b', label=name + ' < 0')
             ax1.bar(x_p, y_p, 0.8, facecolor='r', label=name + ' > 0')
@@ -488,8 +489,13 @@ class cfPlot():
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
-                                "ecoop_ext:parameter_name": "figsize",
-                                "ecoop_ext:parameter_value": "figsize"
+                                "ecoop_ext:parameter_name": "fig_height",
+                                "ecoop_ext:parameter_value": "%s" % fig_height
+                            },
+                            {
+                                "@type": "ecoop_ext:Parameter",
+                                "ecoop_ext:parameter_name": "fig_width",
+                                "ecoop_ext:parameter_value": "%s" % fig_width
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
@@ -612,7 +618,7 @@ class cfPlot():
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
                 print(jsonld)
-                provname=figsave.split(".")[0]
+                provname=figsave.replace(".","_")
                 display(Javascript("IPython.notebook.metadata.ecoop_prov.%s = %s" % (provname,jsonld)))
                 #display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
 
