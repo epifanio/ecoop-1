@@ -446,7 +446,7 @@ class cfPlot():
                 jsonld = {
                     "@id": "ex:%s" % figsave,
                     "@type": ["prov:Entity", "ecoop:Figure"],
-                    "ecoop_ext:hasData": 'data',
+                    "ecoop_ext:hasData": "%s" % name,
                     "ecoop_ext:hasCode": {
                         "@type": "ecoop_ext:Code",
                         "ecoop_ext:hasFunction_src_code_link": "",
@@ -454,112 +454,112 @@ class cfPlot():
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "beta",
-                                "ecoop_ext:parameter_value": beta
+                                "ecoop_ext:parameter_value": "%s" % beta
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "center",
-                                "ecoop_ext:parameter_value": center
+                                "ecoop_ext:parameter_value": "%s" % center
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "data",
-                                "ecoop_ext:parameter_value": 'data'
+                                "ecoop_ext:parameter_value": "%s" % data
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "datarange",
-                                "ecoop_ext:parameter_value": datarange
+                                "ecoop_ext:parameter_value": "%s" % datarange
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "dateformat",
-                                "ecoop_ext:parameter_value": dateformat
+                                "ecoop_ext:parameter_value": "%s" % dateformat
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "dpi",
-                                "ecoop_ext:parameter_value": dpi
+                                "ecoop_ext:parameter_value": "%s" % dpi
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "figsave",
-                                "ecoop_ext:parameter_value": figsave
+                                "ecoop_ext:parameter_value": "%s" % figsave
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "figsize",
-                                "ecoop_ext:parameter_value": figsize
+                                "ecoop_ext:parameter_value": "%s" % figsize
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "frac",
-                                "ecoop_ext:parameter_value": frac
+                                "ecoop_ext:parameter_value": "%s" % frac
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "freq",
-                                "ecoop_ext:parameter_value": freq
+                                "ecoop_ext:parameter_value": "%s" % freq
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "grid",
-                                "ecoop_ext:parameter_value": grid
+                                "ecoop_ext:parameter_value": "%s" % grid
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "it",
-                                "ecoop_ext:parameter_value": it
+                                "ecoop_ext:parameter_value": "%s" % it
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "legend",
-                                "ecoop_ext:parameter_value": legend
+                                "ecoop_ext:parameter_value": "%s" % legend
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "min_periods",
-                                "ecoop_ext:parameter_value": min_periods
+                                "ecoop_ext:parameter_value": "%s" % min_periods
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "name",
-                                "ecoop_ext:parameter_value": name
+                                "ecoop_ext:parameter_value": "%s" % name
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "nb",
-                                "ecoop_ext:parameter_value": nb
+                                "ecoop_ext:parameter_value": "%s" % nb
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "output",
-                                "ecoop_ext:parameter_value": output
+                                "ecoop_ext:parameter_value": "%s" % output
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "power",
-                                "ecoop_ext:parameter_value": power
+                                "ecoop_ext:parameter_value": "%s" % power
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "scategory",
-                                "ecoop_ext:parameter_value": scategory
+                                "ecoop_ext:parameter_value": "%s" % scategory
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "smoother",
-                                "ecoop_ext:parameter_value": smoother
+                                "ecoop_ext:parameter_value": "%s" % smoother
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "std",
-                                "ecoop_ext:parameter_value": std
+                                "ecoop_ext:parameter_value": "%s" % std
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "title",
-                                "ecoop_ext:parameter_value": title
+                                "ecoop_ext:parameter_value": "%s" % title
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
@@ -569,42 +569,42 @@ class cfPlot():
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "win_size",
-                                "ecoop_ext:parameter_value": win_size
+                                "ecoop_ext:parameter_value": "%s" % win_size
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "win_type",
-                                "ecoop_ext:parameter_value": win_type
+                                "ecoop_ext:parameter_value": "%s" % win_type
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "xlabel",
-                                "ecoop_ext:parameter_value": xlabel
+                                "ecoop_ext:parameter_value": "%s" % xlabel
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "xmargin",
-                                "ecoop_ext:parameter_value": xmargin
+                                "ecoop_ext:parameter_value": "%s" % xmargin
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "xticks",
-                                "ecoop_ext:parameter_value": xticks
+                                "ecoop_ext:parameter_value": "%s" % xticks
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "xticks_fontsize",
-                                "ecoop_ext:parameter_value": xticks_fontsize
+                                "ecoop_ext:parameter_value": "%s" % xticks_fontsize
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "ylabel",
-                                "ecoop_ext:parameter_value": ylabel
+                                "ecoop_ext:parameter_value": "%s" % ylabel
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "ymargin",
-                                "ecoop_ext:parameter_value": ymargin
+                                "ecoop_ext:parameter_value": "%s" % ymargin
                             }
                         ]
                     },
@@ -612,7 +612,7 @@ class cfPlot():
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
                 print(jsonld)
-                display(Javascript("IPython.notebook.metadata.ecoop_prov['%s'] = %s" % (figsave,jsonld)))
+                display(Javascript("IPython.notebook.metadata.ecoop_prov.%s = %s" % (figsave,jsonld)))
                 #display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
 
             #pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
