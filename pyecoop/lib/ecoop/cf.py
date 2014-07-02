@@ -611,8 +611,8 @@ class cfPlot():
                     "ecoop_ext:usedSoftware": [{"@id": "ex:ecoop_software"}, {"@id": "ex:ipython_software"}]
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
-                #print(jsonld)
-                display(Javascript("IPython.notebook.metadata.ecoop_prov['plot_index'] = %s" % jsonld))
+                print(jsonld)
+                display(Javascript("IPython.notebook.metadata.ecoop_prov['%s'] = %s" % (figsave,jsonld)))
                 #display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
 
             #pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
