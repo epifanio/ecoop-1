@@ -283,6 +283,7 @@ class cfData():
                     }
                 }
                 #display('amo_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                print jsonld
                 display(Javascript("IPython.notebook.metadata.ecoop_prov.amo_get = {}".format(jsonld)))
             return amodata
         except:
