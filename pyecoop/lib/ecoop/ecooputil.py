@@ -110,7 +110,7 @@ class shareUtil():
         f = open(os.path.join(ID, nb_name), 'w')
         f.write(makeSplash(splash, key))
         f.close()
-        splashlink = util.gistit(filename=os.path.join(ID, nb_name), jist=jist, type='notebook')
+        splashlink = self.gistit(filename=os.path.join(ID, nb_name), jist=jist, type='notebook')
         return splashlink
 
     def zipdir(self, basedir, archivename, rm='no'):
