@@ -612,6 +612,7 @@ class cfPlot():
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
                 print(jsonld)
+                provname=figsave.split(".")[0]
                 display(Javascript("IPython.notebook.metadata.ecoop_prov.%s = %s" % (figsave,jsonld)))
                 #display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
 
