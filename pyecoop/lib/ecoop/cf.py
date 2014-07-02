@@ -446,7 +446,7 @@ class cfPlot():
                 jsonld = {
                     "@id": "ex:%s" % figsave,
                     "@type": ["prov:Entity", "ecoop:Figure"],
-                    "ecoop_ext:hasData": data,
+                    "ecoop_ext:hasData": 'data',
                     "ecoop_ext:hasCode": {
                         "@type": "ecoop_ext:Code",
                         "ecoop_ext:hasFunction_src_code_link": "",
