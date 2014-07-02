@@ -117,7 +117,7 @@ class cfData():
                     }
                 }
                 #display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
-                print(jsonld)
+                #print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov['nao_get'] = %s" % jsonld))
 
 
@@ -198,7 +198,7 @@ class cfData():
                     }
                 }
                 #display('nin_get - metadata saved', metadata={'ecoop_prov': jsonld})
-                print(jsonld)
+                #print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov['nin_get'] = %s" % jsonld))
             return nin_anomalies
         except IOError:
@@ -285,7 +285,7 @@ class cfData():
                     }
                 }
                 #display('amo_get - metadata saved', metadata={'ecoop_prov': jsonld})
-                print(jsonld)
+                #print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov['amo_get'] = %s" % jsonld))
                 #display(Javascript("IPython.notebook.metadata.ecoop_prov.amo_get = {}".format(jsonld)))
             return amodata
@@ -444,9 +444,9 @@ class cfPlot():
             #plt.show()
             if prov:
                 jsonld = {
-                    "@id": "ex:NAO_figure",
+                    "@id": "ex:%s" % figsave,
                     "@type": ["prov:Entity", "ecoop:Figure"],
-                    "ecoop_ext:hasData": "ecoop_data['NAO']",
+                    "ecoop_ext:hasData": data,
                     "ecoop_ext:hasCode": {
                         "@type": "ecoop_ext:Code",
                         "ecoop_ext:hasFunction_src_code_link": "",
@@ -611,8 +611,9 @@ class cfPlot():
                     "ecoop_ext:usedSoftware": [{"@id": "ex:ecoop_software"}, {"@id": "ex:ipython_software"}]
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
-                print(jsonld)
-                display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
+                #print(jsonld)
+                display(Javascript("IPython.notebook.metadata.ecoop_prov['plot_index'] = %s" % jsonld))
+                #display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
 
             #pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
             plt.show()
