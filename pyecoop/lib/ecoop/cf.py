@@ -489,7 +489,7 @@ class cfPlot():
                             {
                                 "@type": "ecoop_ext:Parameter",
                                 "ecoop_ext:parameter_name": "figsize",
-                                "ecoop_ext:parameter_value": "%s" % figsize
+                                "ecoop_ext:parameter_value": "figsize"
                             },
                             {
                                 "@type": "ecoop_ext:Parameter",
