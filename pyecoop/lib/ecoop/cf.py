@@ -116,8 +116,8 @@ class cfData():
                         ]
                     }
                 }
-                display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
-                display(Javascript("IPython.notebook.metadata.ecoop_prov.nao_get = {}".format(jsonld)))
+                #display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                display(Javascript("IPython.notebook.metadata.ecoop_prov['nao_get'] = %s" % jsonld))
 
 
             return naodata
@@ -196,8 +196,8 @@ class cfData():
                         ]
                     }
                 }
-                display('nin_get - metadata saved', metadata={'ecoop_prov': jsonld})
-                display(Javascript("IPython.notebook.metadata.ecoop_prov.nin_get = {}".format(jsonld)))
+                #display('nin_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                display(Javascript("IPython.notebook.metadata.ecoop_prov['nin_get'] = %s" % jsonld))
             return nin_anomalies
         except IOError:
             print(
@@ -284,7 +284,8 @@ class cfData():
                 }
                 #display('amo_get - metadata saved', metadata={'ecoop_prov': jsonld})
                 print(jsonld)
-                display(Javascript("IPython.notebook.metadata.ecoop_prov.amo_get = {}".format(jsonld)))
+                display(Javascript("IPython.notebook.metadata.ecoop_prov['amo_get'] = %s" % jsonld))
+                #display(Javascript("IPython.notebook.metadata.ecoop_prov.amo_get = {}".format(jsonld)))
             return amodata
         except:
             print(
