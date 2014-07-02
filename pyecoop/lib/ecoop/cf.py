@@ -117,6 +117,7 @@ class cfData():
                     }
                 }
                 #display('nao_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov['nao_get'] = %s" % jsonld))
 
 
@@ -197,6 +198,7 @@ class cfData():
                     }
                 }
                 #display('nin_get - metadata saved', metadata={'ecoop_prov': jsonld})
+                print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov['nin_get'] = %s" % jsonld))
             return nin_anomalies
         except IOError:
@@ -609,6 +611,7 @@ class cfPlot():
                     "ecoop_ext:usedSoftware": [{"@id": "ex:ecoop_software"}, {"@id": "ex:ipython_software"}]
                 }
                 #display('cell-output metadata saved', metadata={'ecoop_prov': jsonld})
+                print(jsonld)
                 display(Javascript("IPython.notebook.metadata.ecoop_prov.plot_index = {}".format(jsonld)))
 
             #pyplot.show_bokeh(plt.gcf(), filename="subplots.html")
