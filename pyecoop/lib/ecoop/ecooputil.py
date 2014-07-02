@@ -101,7 +101,7 @@ class shareUtil():
 
     def makesplashlink(self, ID, datafile, key="", jist='/usr/local/bin/gist', nb_name=""):
         datafile = os.path.join(ID,datafile)
-        datalink = util.gistit(filename=datafile, jist=jist, type='text')
+        datalink = gistit(filename=datafile, jist=jist, type='text')
         nbviewerlink = util.gistit(filename=nb_name, jist=jist, type='notebook')
         splash[key]['nbviewer'] = nbviewerlink
         splash[key]['repository'] = 'https://github.com/epifanio/ecoop'
