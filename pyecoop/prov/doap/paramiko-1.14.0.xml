@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF xmlns="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><Project><name>paramiko</name>
+<shortdesc>SSH2 protocol library</shortdesc>
+<description>This is a library for making SSH2 connections (client or server).
+Emphasis is on using SSH2 as an alternative to SSL for making secure
+connections between python scripts.  All major ciphers and hash methods
+are supported.  SFTP client and server mode are both supported too.
+
+Required packages:
+    pyCrypto
+
+To install the `in-development version
+&lt;https://github.com/paramiko/paramiko/tarball/master#egg=paramiko-dev&gt;`_, use
+`pip install paramiko==dev`.</description>
+<homepage rdf:resource="https://github.com/paramiko/paramiko/" />
+<maintainer><foaf:Person><foaf:name>Jeff Forcier</foaf:name>
+<foaf:mbox_sha1sum>18f0922c51ed21bf199a3cd61f9eb5657860b3af</foaf:mbox_sha1sum></foaf:Person></maintainer>
+<release><Version><revision>1.14.0</revision></Version></release>
+</Project></rdf:RDF>
