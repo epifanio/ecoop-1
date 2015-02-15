@@ -200,16 +200,16 @@ cd $TEMPBUILD
 #mv qhull-2012.1-src.tgz $TEMPBUILD/tarball
 #mv qhull-2012.1-src $TEMPBUILD/src
 
-wget --no-check-certificate -c --progress=dot:mega ftp://ftp.gnu.org/gnu/octave/octave-3.8.1.tar.gz
-tar -zxf octave-3.8.1.tar.gz
-cd octave-3.8.1
+wget --no-check-certificate -c --progress=dot:mega ftp://ftp.gnu.org/gnu/octave/octave-3.8.2.tar.gz
+tar -zxf octave-3.8.2.tar.gz
+cd octave-3.8.2
 CPPFLAGS=-I$PREFIX/include LDFLAGS=-L$PREFIX/lib ./configure --with-hdf5-includedir=$PREFIX/include/ --with-hdf5-libdir=$PREFIX/lib --with-glpk-libdir=$PREFIX/lib --with-glpk-includedir=$PREFIX/include/ --prefix=$PREFIX/ --with-magick=ImageMagick --enable-shared
 make -j $np
 make install
 make distclean > /dev/null 2>&1
 cd $TEMPBUILD
-#mv octave-3.8.1.tar.gz $TEMPBUILD/tarball
-#mv octave-3.8.1 $TEMPBUILD/src
+#mv octave-3.8.2.tar.gz $TEMPBUILD/tarball
+#mv octave-3.8.2 $TEMPBUILD/src
 
 version="2"
 if [[ "$version" == "2" ]]
