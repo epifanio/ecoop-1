@@ -65,7 +65,7 @@ class cfData():
         self.x = ''
 
     def nao_get(self,
-                url="https://climatedataguide.ucar.edu/sites/default/files/climate_index_files/nao_station_djfm.txt",
+                url="https://climatedataguide.ucar.edu/sites/default/files/climate_index_files/nao_station_djfm.ascii",
                 save=None, csvout='nao.csv', prov=False, verbose=False):
         """
         
