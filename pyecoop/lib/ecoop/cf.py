@@ -124,7 +124,7 @@ class cfData():
             return naodata
         except IOError:
             print(
-                'unable to fetch the data, check if %s is a valid address and data is conform to AMO spec, for info about data spec. see [1]' % url)
+                'unable to fetch the data, check if %s is a valid address and data is conform to NAO spec, for info about data spec. see [1]' % url)
             # try cached version / history-linked-uri
 
 
@@ -222,7 +222,7 @@ class cfData():
         return date
 
 
-    def amo_get(self, url='http://www.cdc.noaa.gov/Correlation/amon.us.long.data', save=None, csvout='amo.csv',
+    def amo_get(self, url='http://www.esrl.noaa.gov/psd/data/correlation/amon.us.long.data', save=None, csvout='amo.csv',
                 prov=False, verbose=False):
         """
         
