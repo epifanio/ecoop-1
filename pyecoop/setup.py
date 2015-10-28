@@ -116,8 +116,8 @@ if not release:
         a.close()
 
 
-with open('README.md') as file:
-    long_description = file.read()
+#with open('README.md') as file:
+#    long_description = file.read()
 
 
 write_version_py()
@@ -126,7 +126,7 @@ setup(
     name = 'ecoop',
     version = '0.1.0',
     description = 'A collecton of utilities to be used from inside an IPython Notebook to automatize the building of the Ecosystem Status Report for the NE-LME - Climate forcing UseCase',
-    long_description=long_description,
+    #long_description=long_description,
     author = 'Massimo Di Stefano',
     author_unixid = 'epinux',
     author_email = 'epiesasha@me.com',
